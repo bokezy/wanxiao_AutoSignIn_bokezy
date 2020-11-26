@@ -14,7 +14,7 @@ driver = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options
 
 def main():
     #sectets字段录入
-    sckey, success, failure, result, phone, password,guardianPhone,egc,roomnb,sckey = [], [], [], [], [], [], [], [], [], []
+    sckey, success, failure, result, phone, password,guardianPhone,egc,sckey = [], [], [], [], [], [], [], [], []
     #多人循环录入
     while True:
         try:
@@ -133,14 +133,16 @@ def GetUserJson(deptId,text,stuNum,userName,phone,guardianPhone,userId,customerI
                         },
                     {
                         "propertyname":"dormitory","value":"无"
-                        }, {
+                        }, 
+			{
 			"propertyname": "ownPhone",
 			"value": phone
-		},
+			},
 			{
 			"propertyname": "emergencyContact",
 			"value": egc
-		}, {
+			}, 
+			{
 			"propertyname": "mergencyPeoplePhone",
 			"value": guardianPhone
 		}],
