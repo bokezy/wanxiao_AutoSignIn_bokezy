@@ -102,7 +102,7 @@ def GetUserJson(deptId,text,stuNum,userName,phone,guardianPhone,userId,customerI
 			"deptid": deptId,
 			"text": text
 		},
-		"areaStr": {\"streetNumber\":\"\",\"street\":\"G105(京珠线)\",\"district\":\"从化区\",\"city\":\"广州市\",\"province\":\"广东省\",\"town\":\"\",\"pois\":\"广东水利电力职业技术学院\",\"lng\":113.62442699999951,\"lat\":23.568592017514746,\"address\":\"从化区G105(京珠线)广东水利电力职业技术学院\",\"text\":\"广东省-广州市\",\"code\":\"\"},
+		"areaStr": {"streetNumber":"","street":"G105(京珠线)","district":"从化区","city":"广州市","province":"广东省","town":"","pois":"广东水利电力职业技术学院","lng":113.62442699999951,"lat":23.568592017514746,"address":"从化区G105(京珠线)广东水利电力职业技术学院","text":"广东省-广州市","code":""},
 		"reportdate": round(time.time()*1000),
 		"customerid": customerId,
 		"deptid": deptId,
