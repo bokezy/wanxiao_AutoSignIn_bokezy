@@ -14,7 +14,7 @@ driver = webdriver.Chrome('/usr/bin/chromedriver', chrome_options=chrome_options
 
 def main():
     #sectets字段录入
-    sckey, success, failure, result, phone, password,guardianPhone = [], [], [], [], [], [], []
+    sckey, success, failure, result, phone, password,guardianPhone,egc,roomnb,sckey = [], [], [], [], [], [], [], [], [], []
     #多人循环录入
     while True:
         try:
@@ -23,7 +23,9 @@ def main():
             phone.append(info[0])
             password.append(info[1])
             guardianPhone.append(info[2])
-            sckey.append(info[3])
+	    egc.append(info[3])
+	    roomnb.append(info[4])
+	    sckey.append(info[5])
         except:
             break
 
@@ -100,7 +102,7 @@ def GetUserJson(deptId,text,stuNum,userName,phone,guardianPhone,userId,customerI
 			"deptid": deptId,
 			"text": text
 		},
-		"areaStr": {"streetNumber":"","street":"新七大道","district":"浉河区","city":"信阳市","province":"河南省","town":"","pois":"信阳师范学院","lng":114.04613300000214 + random.random()/100000,"lat":32.15061303752275 + random.random()/100000,"address":"浉河区新七大道信阳师范学院","text":"河南省-信阳市","code":""},
+		"areaStr": {\"streetNumber\":\"\",\"street\":\"G105(京珠线)\",\"district\":\"从化区\",\"city\":\"广州市\",\"province\":\"广东省\",\"town\":\"\",\"pois\":\"广东水利电力职业技术学院\",\"lng\":113.62442699999951,\"lat\":23.568592017514746,\"address\":\"从化区G105(京珠线)广东水利电力职业技术学院\",\"text\":\"广东省-广州市\",\"code\":\"\"},
 		"reportdate": round(time.time()*1000),
 		"customerid": customerId,
 		"deptid": deptId,
@@ -110,42 +112,34 @@ def GetUserJson(deptId,text,stuNum,userName,phone,guardianPhone,userId,customerI
 		"username": userName,
 		"phonenum": phone,
 		"userid": userId,
-		"updatainfo": [{
-			"propertyname": "wendu",
-			"value": round(random.uniform(36.2,36.8),1)
-		}, {
-			"propertyname": "symptom",
-			"value": "无症状"
-		}, {
-			"propertyname": "jkzks",
-			"value": "正常"
-		}, {
-			"propertyname": "jtcy",
-			"value": "否"
-		}, {
-			"propertyname": "SFJCQZHYS",
-			"value": "否"
-		}, {
-			"propertyname": "sfddgr",
-			"value": "否"
-		}, {
-			"propertyname": "isTouch",
-			"value": "否"
-		}, {
-			"propertyname": "是否途径或逗留过疫情中，高风险地区？",
-			"value": ""
-		}, {
-			"propertyname": "isAlreadyInSchool",
-			"value": "有"
-		}, {
-			"propertyname": "hsjc0511",
-			"value": "否"
-		}, {
+		"updatainfo": [
+			{
+			
+                        "propertyname":"mrcw1","value":"36.4"
+                        },
+                    {
+                        "propertyname":"symptom","value":"无症状"
+                        },
+                    {
+                        "propertyname":"isConfirmed","value":"否"
+                        },
+                    {
+                        "propertyname":"isTouch","value":"否"
+                        },
+                    {
+                        "propertyname":"isFFHasSymptom","value":"没有"
+                        },
+                    {
+                        "propertyname":"xinqing","value":"健康"
+                        },
+                    {
+                        "propertyname":"dormitory","value":roomnb
+                        }, {
 			"propertyname": "ownPhone",
 			"value": phone
 		}, {
 			"propertyname": "emergencyContact",
-			"value": "监护人"
+			"value": egc
 		}, {
 			"propertyname": "mergencyPeoplePhone",
 			"value": guardianPhone
