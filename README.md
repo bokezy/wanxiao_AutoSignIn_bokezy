@@ -1,6 +1,6 @@
 # 💧广东水利电力学院完美校园签到
 
-**💧在原[project](https://github.com/srcrs/Perfect_Campus_AutoSignIn)的基础下添加对[广东水利电力学院](https://www.gdsdxy.edu.cn/)的可用性，对 [srcrs](https://github.com/srcrs)的贡献表示感谢。
+**💧在[原Project](https://github.com/srcrs/Perfect_Campus_AutoSignIn)的基础下添加对[广东水利电力学院](https://www.gdsdxy.edu.cn/)的可用性，对 [srcrs](https://github.com/srcrs)的贡献表示感谢。**
 
 **欢迎大家 fork 测试使用，如果可用的话，可以开 [issue](https://github.com/llkhs/Perfect_Campus_AutoSignIn/issues) 让更多人知道**
 
@@ -31,13 +31,11 @@
 
 - 若需推送至微信，请注册`server`酱，并获取其`SCKEY`
 
-## 1.fork本项目
--
+## 1.Fork本项目
 
 
 
-## 2.开启antions(默认你的actions是处于禁用状态)
--
+## 2.开启Antions(默认你的Actions是处于禁用状态)
 
 
 
@@ -84,7 +82,7 @@ USERS | 手机号,密码,监护人手机号,SCKEY
 
 
 ## About
-**免责声明：此仓库仅用于我个人储存17wanxiaoCheckin打卡记录用，他人可参考，但本人不承担任何责任，例如他人盗用本仓库代码用于商业用途或侵犯国家、社会、企业利益和公民的合法权益等，再次我本人不承担任何责任，此仓库仅用于我个人储存代码，仅此而已）
+- 免责声明：此仓库仅用于我个人储存17wanxiaoCheckin打卡记录用，他人可参考，但本人不承担任何责任，例如他人盗用本仓库代码用于商业用途或侵犯国家、社会、企业利益和公民的合法权益等，再次我本人不承担任何责任，此仓库仅用于我个人储存代码，仅此而已）
 
 
 
