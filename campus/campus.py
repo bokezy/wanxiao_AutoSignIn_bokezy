@@ -56,8 +56,8 @@ class CampusCard:
         :return:
         """
         resp = requests.post(
-            #"https://server.17wanxiao.com/campus/cam_iface46/exchangeSecretkey.action",
-            "https://app.17wanxiao.com:443/campus/cam_iface46/exchangeSecretkey.action",
+            "https://server.17wanxiao.com/campus/cam_iface46/exchangeSecretkey.action",
+            #"https://app.17wanxiao.com:443/campus/cam_iface46/exchangeSecretkey.action",
             headers={
                 #"User-Agent": "Dalvik/2.1.0 (Linux; U; Android 5.1.1; HUAWEI MLA-AL10 Build/HUAWEIMLA-AL10)",
                 "User-Agent": "NCP/5.3.1 (iPhone; iOS 13.5; Scale/2.00)",
