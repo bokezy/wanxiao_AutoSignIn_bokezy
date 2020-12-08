@@ -22,8 +22,8 @@ def main():
             info = users.split(',')
             phone.append(info[0])
             password.append(info[1])
-            guardianPhone.append(info[2])
-            egcP.append(info[3])#add监护人信息获取,secrets不需要写监护人了
+            egcP.append(info[2])
+            guardianPhone.append(info[3])
             sckey.append(info[4])
         except:
             break
