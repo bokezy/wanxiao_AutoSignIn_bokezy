@@ -1,5 +1,7 @@
 import time
 import json
+from typing import List
+
 import requests
 import datetime
 import logging
@@ -13,7 +15,6 @@ def initLogging():
 
 def main():
     # sectets字段录入
-    i = 0
     sckey, success, failure, result, phone, password = [], [], [], [], [], []
     # 多人循环录入
     while True:
@@ -26,23 +27,22 @@ def main():
         except BaseException:
             break
     # 提交打卡
+    count, msg, run = 0, "null", False
     for index, value in enumerate(phone):
         print("-----------------------")
         print("开始获取用户%s信息" % (value[-4:]))
-        count = 0
-        msg = "null"
         while count < 3:
             try:
                 campus = CampusCard(phone[index], password[index])
                 token = campus.user_info["sessionId"]
                 time.sleep(1)
-                res = check_in(token)
+                res = check_in(token).json()
                 strTime = GetNowTime()
                 if res['code'] == '10000':
                     success.append(value[-4:])
                     msg = value[-4:] + "-打卡成功-" + strTime
-                    i = 1
                     result = res
+                    run = False
                     break
                 else:
                     failure.append(value[-4:])
@@ -50,7 +50,7 @@ def main():
                     count = count + 1
                     print('%s打卡失败，开始第%d次重试...' % (value[-6:], count))
                     time.sleep(301)
-                print(res)
+
             except Exception as err:
                 print(err)
                 msg = '出现错误'
@@ -62,7 +62,7 @@ def main():
     title = "成功: %s 人,失败: %s 人" % (len(success), len(fail))
     for _ in range(1):
         try:
-            if sckey[0] & i == 1:
+            if not (sckey is None) & run:
                 print('开始Wechat推送...')
                 WechatPush(title, sckey[0], success, fail, result)
                 break
@@ -124,8 +124,8 @@ def check_in(token):
     # print(jsons)
     # 提交打卡
     time.sleep(2)
-    res = requests.post(sign_url, json=jsons, timeout=10).json()
-    print(res)
+    res = requests.post(sign_url, json=jsons, timeout=10)
+    print(res.json())
     return res
 
 
@@ -133,7 +133,6 @@ def check_in(token):
 def WechatPush(title, sckey, success, fail, result):
     send_url = f"https://sc.ftqq.com/{sckey}.send"
     strTime = GetNowTime()
-    takeit = result.text()
     page = json.dumps(result, sort_keys=True, indent=4, separators=(',', ':'), ensure_ascii=False)
     content = [f"""`{strTime}`
 #### 打卡成功用户:
