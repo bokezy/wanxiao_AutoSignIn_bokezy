@@ -8,7 +8,6 @@ from campus import CampusCard
 def main():
     # sectets字段录入
     sckey, success, failure, result, phone, password = [], [], [], [], [], []
-
     # 多人循环录入
     while True:
         try:
@@ -41,9 +40,8 @@ def main():
                     failure.append(value[-4:])
                     msg = value[-4:] + "-失败-" + strTime
                     count = count + 1
-                    print('%s打卡失败，开始第%d次重试...' % (value[-4:], count))
-                    result = res
-                    time.sleep(60)
+                    print('%s打卡失败，开始第%d次重试...' % (value[-6:], count))
+                    time.sleep(301)
 
             except Exception as err:
                 print(err)
@@ -127,9 +125,6 @@ def check_in(token):
 def WechatPush(title, sckey, success, fail, result):
     send_url = f"https://sc.ftqq.com/{sckey}.send"
     strTime = GetNowTime()
-    # if not fail:    # 花里胡哨的
-    #     fail = ["我见青山多妩媚"]
-    #     fail = ''.join(fail)
     page = json.dumps(result, sort_keys=True, indent=4, separators=(',', ':'), ensure_ascii=False)
     content = [f"""`{strTime}`
 #### 打卡成功用户:
