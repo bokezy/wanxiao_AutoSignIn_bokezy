@@ -20,8 +20,8 @@ def main():
             break
     # 提交打卡
     count, msg, run = 0, "null", False
+    print("-----------------------")
     for index, value in enumerate(phone):
-        print("-----------------------")
         print("开始获取用户%s信息" % (value[-4:]))
         while count < 3:
             try:
@@ -52,9 +52,6 @@ def main():
         print("-----------------------")
     fail = sorted(set(failure), key=failure.index)
     title = "成功: %s 人,失败: %s 人" % (len(success), len(fail))
-    if (fail is None):
-       fail = ['我见青山多妩媚']
-       fail = ''.join(fail)
     for _ in range(1):
         try:
             if not (sckey is None) & run:
