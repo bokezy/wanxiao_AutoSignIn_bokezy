@@ -10,6 +10,7 @@ from .campus_card.rsa_encrypt import chrysanthemum
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 petals = chrysanthemum()
 
+
 class CampusCard:
     """
     完美校园APP
@@ -60,11 +61,9 @@ class CampusCard:
         headerE = {"User-Agent": "NCP/5.3.1 (iPhone; iOS 13.5; Scale/2.00)"}
         jsonE = {"key": self.user_info["rsaKey"]["public"]}
         resp = requests.post(url=urlE, headers=headerE, json=jsonE, proxies=petals, verify=False)
-        print(resp.text)
         session_info = json.loads(
             rsa.rsa_decrypt(resp.text.encode(resp.apparent_encoding), self.user_info["rsaKey"]["private"])
         )
-        print(session_info)
         self.user_info["sessionId"] = session_info["session"]
         self.user_info["appKey"] = session_info["key"][:24]
 
@@ -104,8 +103,7 @@ class CampusCard:
             json=upload_args,
             proxies=petals,
             verify=False
-        )
-        print(resp.text)
+        ).json()
         if resp["result_"]:
             self.data = resp["data"]
             self.user_info["login"] = True
@@ -114,28 +112,6 @@ class CampusCard:
         else:
             print(resp['message_'])
         return resp["result_"]
-
-    # 如果不请求一下 token 会失效
-    def get_main_info(self):
-        resp = requests.post(
-            "https://reportedh5.17wanxiao.com/api/clock/school/getUserInfo",
-            headers={
-                "Referer": "https://reportedh5.17wanxiao.com/health/index.html?templateid=pneumonia&businessType=epmpics&versioncode=10531102&systemType=IOS&UAinfo=wanxiao&token="+self.user_info["sessionId"],
-                "Origin": "https://reportedh5.17wanxiao.com",
-                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5 like Mac OS X) "
-                              "AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E149 Wanxiao/5.3.1"
-            },
-            data={
-                "appClassify": "DK",
-                "token": self.user_info["sessionId"]
-            },
-            proxies=petals,
-            verify=False
-        ).json()
-        print(resp)
-        if resp["msg"] == '成功':
-            return resp["userInfo"]
-        return resp
 
     def save_user_info(self):
         """
