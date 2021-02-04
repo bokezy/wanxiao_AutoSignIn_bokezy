@@ -105,6 +105,7 @@ class CampusCard:
             json=upload_args,
             verify=False
         ).json()
+        print(resp.text)
         if resp["result_"]:
             self.data = resp["data"]
             self.user_info["login"] = True
@@ -130,9 +131,9 @@ class CampusCard:
             },
             verify=False
         ).json()
+        print(resp)
         if resp["msg"] == '成功':
             return resp["userInfo"]
-        print(resp)
         return resp
 
     def save_user_info(self):
