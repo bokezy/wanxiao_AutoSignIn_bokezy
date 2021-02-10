@@ -113,8 +113,6 @@ class CampusCard:
             print(errlogin)
             return errlogin
 
-
-
     def save_user_info(self):
         """
         保存当前的设备信息

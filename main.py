@@ -40,10 +40,7 @@ def main():
                     success.append(value[-4:])
                     msg = value[-4:] + "-打卡成功-" + strTime
                     result = res
-                    print(mail[index])
-                    print(key[0])
-                    qmail = sendEmail(mail[index], key[0])
-                    print(qmail)
+
                     break
                 else:
                     failure.append(value[-4:])
@@ -59,6 +56,11 @@ def main():
                 failure.append(value[-4:])
                 break
         print(msg)
+        try:
+            Smail = sendEmail(mail[index], key[0])
+            print(Smail)
+        except Exception:
+            print ('邮箱异常')
         print("-----------------------")
     fail = sorted(set(failure), key=failure.index)
     title = "成功: %s 人,失败: %s 人" % (len(success), len(fail))

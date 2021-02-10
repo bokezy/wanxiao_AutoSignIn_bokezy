@@ -10,7 +10,7 @@ def sendEmail(mail, key):
     msg_to = ''.join(mail)   # 收件人邮箱
     subject = " ♡ 打卡成功"  # 主题
     content = timer()
-    msg = MIMEText(content, 'utf-8')
+    msg = MIMEText(content)
     msg['Subject'] = subject
     msg['From'] = msg_from
     msg['To'] = msg_to
@@ -18,9 +18,9 @@ def sendEmail(mail, key):
         send = smtplib.SMTP_SSL("smtp.qq.com", 465)   # 邮件服务器及端口号
         send.login(msg_from, passwd)
         send.sendmail(msg_from, msg_to, msg.as_string())
-        return {'msg': "QQ邮箱推送成功"}
+        return "邮箱推送成功"
     except Exception:
-        return {'msg': "邮箱推送失败"}
+        return "邮箱推送失败"
 
 
 def timer():
